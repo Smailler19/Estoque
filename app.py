@@ -7,6 +7,7 @@ estoque = {
     "Cimento": 500,
     "Cal": 300,
     "Piso ref. 4343": 300,
+    "Telha": 500,
 }
 
 @app.route("/")
