@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Azul muito claro */
+    color: #333; /* Cor de texto suave */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #004d40; /* Verde escuro */
+    margin-top: 20px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #e8f5e9; /* Verde claro */
+    border: 1px solid #ccc;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background-color: #b2dfdb; /* Azul claro */
+    color: #004d40; /* Verde escuro */
+}
+
+table tr:nth-child(even) {
+    background-color: #f9fbe7; /* Verde muito claro */
+}
+
+form {
+    width: 50%;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #e3f2fd; /* Azul muito claro */
+    border: 1px solid #90caf9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #90caf9;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50; /* Verde forte */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #388e3c; /* Verde escuro */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #004d40; /* Verde escuro */
+    color: white;
+    margin-top: 20px;
+}
