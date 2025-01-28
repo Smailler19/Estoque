@@ -16,26 +16,42 @@ def index():
 
 @app.route("/adicionar", methods=["POST"])
 def adicionar():
-    produto = request.form.get("produto").strip()
+    produto = request.form.get("produto", "").strip()
     quantidade = request.form.get("quantidade", type=int)
     
-    if produto and quantidade is not None:  # Essa é a minha garantia para que os dados não sejam nulos
-        if produto in estoque:
-            estoque[produto] += quantidade
-        else:
-            estoque[produto] = quantidade
+    if not produto or quantidade is None or quantidade <= 0:
+        return redirect(url_for("index"))
+    
+    if produto in estoque:
+        estoque[produto] += quantidade
+    else:
+        estoque[produto] = quantidade
     return redirect(url_for("index"))
 
 @app.route("/remover", methods=["POST"])
 def remover():
-    produto = request.form.get("produto").strip()
+    produto = request.form.get("produto", "").strip()
     quantidade = request.form.get("quantidade", type=int)
     
-    if produto in estoque and quantidade is not None:  # Aqui é minha garantia para que os dados sejam válidos
+    if not produto or quantidade is None or quantidade <= 0:
+        return redirect(url_for("index"))
+    
+    if produto in estoque:
         estoque[produto] -= quantidade
-        if estoque[produto] <= 0:
-            del estoque[produto]
+    else:
+        estoque[produto] = -quantidade
     return redirect(url_for("index"))
+
+@app.route("/pesquisa", methods=["POST"])
+def pesquisa():
+    nome = request.form.get("nome", "").strip().lower()
+    resultados = None
+
+    if nome:
+        # Filtra os produtos pelo nome fornecido
+        resultados = {k: v for k, v in estoque.items() if nome in k.lower()}
+
+    return render_template("index.html", estoque=estoque, resultados=resultados)
 
 if __name__ == "__main__":
     app.run(debug=True)

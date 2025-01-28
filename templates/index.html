@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>Controle de Estoque</h1>
+
+    <!-- Tabela de Estoque -->
     <table>
         <tr>
             <th>Produto</th>
@@ -21,6 +23,7 @@
         {% endfor %}
     </table>
 
+    <!-- Formulário para Adicionar Produtos -->
     <form action="/adicionar" method="post">
         <label for="produto">Nome do Produto:</label>
         <input type="text" name="produto" id="produto" placeholder="Digite o nome do produto" required>
@@ -29,6 +32,7 @@
         <button type="submit">Adicionar Produto</button>
     </form>
 
+    <!-- Formulário para Remover Produtos -->
     <form action="/remover" method="post">
         <label for="produto-remover">Nome do Produto:</label>
         <input type="text" name="produto" id="produto-remover" placeholder="Digite o nome do produto" required>
@@ -37,8 +41,37 @@
         <button type="submit">Remover Produto</button>
     </form>
 
+    <!-- Formulário de Pesquisa Avançada -->
+    <h2>Pesquisa Avançada</h2>
+    <form action="/pesquisa" method="post">
+        <label for="nome">Nome do Produto:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite parte ou o nome completo do produto" required>
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    <!-- Resultados da Pesquisa -->
+    {% if resultados is not none %}
+        <h2>Resultados da Pesquisa</h2>
+        {% if resultados %}
+            <table>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                </tr>
+                {% for produto, quantidade in resultados.items() %}
+                <tr>
+                    <td>{{ produto }}</td>
+                    <td>{{ quantidade }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>Nenhum produto encontrado.</p>
+        {% endif %}
+    {% endif %}
+
     <footer>
-        <p>Desenvolvido por Smailler da Silva </p>
+        <p>Desenvolvido por Smailler da Silva</p>
     </footer>
 </body>
 </html>
